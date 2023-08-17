@@ -3,7 +3,7 @@
 // TODO: Include packages needed for this application
 var fs = require('fs');
 var inquirer = require('inquirer');
-const generator = require('./lib/logoGenerator');
+const generator = require('./lib/generator');
 
 // TODO: Create a function to initialize app
 function init() {}
