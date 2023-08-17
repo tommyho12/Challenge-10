@@ -43,4 +43,29 @@ inquirer
         },
         
     ])
-    
+    .then((answers) => {
+        if (answers.fn === '') {
+            answers.fn = 'logo';
+        }
+        //The answers given to each question above is passed to the generateMarkdown file to be processed.
+        console.log('creating file. . .');
+        console.log(answers);
+        const logoGen = generator(answers);
+        fs.writeFile(`./examples/${answers.fn}.svg`, logoGen, (err) => {
+            if (err) {
+              console.log('UH OH! There was an error creating the file!\n');
+              console.log('Error: ' + err);
+            } else {
+              console.log('The file was created successfully!');
+            };
+        });
+    })
+    .catch((error) => {
+        if (error.isTtyError) {
+            // Prompt couldn't be rendered in the current environment
+        } else {
+            // Something else went wrong
+        }
+    });
+// Function call to initialize app
+init();
